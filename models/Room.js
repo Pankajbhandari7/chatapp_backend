@@ -5,7 +5,7 @@ const roomSchema = new mongoose.Schema({
     isGroup: { type: Boolean, default: true },
     members: [{ type: String }], // Array of usernames
 },
-{timestamps: true}
+    { timestamps: true }
 );
 
 const Room = mongoose.model("Room", roomSchema);

@@ -9,4 +9,4 @@ router.get("/messages/:roomId", getRoomMessages);
 router.get("/details/:roomId", getRoomDetails);
 router.get("/:username", getUserRooms);
 
-export default router;
+export default router; 

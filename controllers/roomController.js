@@ -65,7 +65,7 @@ export const getRoomMessages = async (req, res) => {
 export const addMember = async (req, res) => {
   try {
     const { roomId, phoneNumber } = req.body;
-    
+
     const user = await User.findOne({ phoneNumber });
     if (!user) return res.status(404).json({ message: "No registered user found with that phone number" });
 

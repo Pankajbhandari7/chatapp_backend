@@ -4,7 +4,7 @@ import Message from "../models/Message.js";
 export const getMessages = async (req, res) => {
   try {
     const { senderId, receiverId } = req.params;
-    
+
     const messages = await Message.find({
       $or: [
         { senderId, receiverId },
@@ -22,7 +22,7 @@ export const getMessages = async (req, res) => {
 export const getUnreadCount = async (req, res) => {
   try {
     const { userId } = req.params;
-    
+
     // Count all messages where the user is the receiver and isRead is false
     const count = await Message.countDocuments({
       receiverId: userId,
@@ -39,7 +39,7 @@ export const getUnreadCount = async (req, res) => {
 export const markMessagesAsRead = async (req, res) => {
   try {
     const { senderId, receiverId } = req.body; // receiverId is the one who read the messages
-    
+
     await Message.updateMany(
       { senderId, receiverId, isRead: false },
       { $set: { isRead: true } }
